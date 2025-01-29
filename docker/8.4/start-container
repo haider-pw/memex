@@ -13,6 +13,13 @@ if [ ! -d /.composer ]; then
     mkdir /.composer
 fi
 
+# Add these lines to create and set up storage directories
+mkdir -p /var/www/html/storage/logs
+chmod -R 775 /var/www/html/storage
+chown -R sail:sail /var/www/html/storage
+touch /var/www/html/storage/logs/reverb.log
+chmod 664 /var/www/html/storage/logs/reverb.log
+
 chmod -R ugo+rw /.composer
 
 if [ $# -gt 0 ]; then
